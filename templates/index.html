@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloraFusion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,700&family=Montserrat:ital,wght@1,400&family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}"/>
+
+</head>
+<body>
+    <div class="overlay">
+        <div class="overlay1">
+
+            <h1>FloraFusion</h1>
+
+            <p>Image Classification Using ResNet.</p>
+
+            <div class="image_upload">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" id="im" name="image" style="color:transparent;" onchange="this.style.color = 'white';">
+                    <label for="im">
+                    <input type="submit" value="Predict">                 
+                </form>
+            </div>
+
+            <div class="output">
+                <!-- Output from Flask will be displayed here -->
+                {% if output %}
+                    <!-- Display the model output -->
+                    <div class="result_div">
+                        <!-- <h2>Model Output:</h2> -->
+                        <p>{{ output }}</p>
+                    </div>
+            {% endif %}
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
